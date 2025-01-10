@@ -1,0 +1,154 @@
+/* Gaya umum untuk body */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.8;
+  color: #2E073;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 20px;
+  background-image: url('background.jpg'); /* Gambar latar belakang */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* Gaya untuk judul */
+h1 {
+  color: #D95F59;
+  font-size: 2.8em;
+  font-weight: 700;
+  border-bottom: 3px solid #3498db;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Gaya untuk subjudul */
+h2 {
+  color: #D95F59;
+  font-size: 2.2em;
+  font-weight: 600;
+  margin-top: 40px;
+  margin-bottom: 15px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+h3 {
+  color: #D95F59;
+  font-size: 1.8em;
+  font-weight: 600;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+/* Gaya untuk paragraf */
+p {
+  font-size: 1.1em;
+  text-align: justify;
+  margin-bottom: 20px;
+}
+
+/* Gaya untuk kode inline */
+code {
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #e9ecef;
+  padding: 3px 6px;
+  border-radius: 4px;
+  color: #C63C51;
+}
+
+/* Gaya untuk blok kode */
+pre {
+  background-color: #1E201E;
+  color: #EBD3F8;
+  padding: 15px;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.95em;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+pre code {
+  background-color: transparent;
+  color: inherit;
+}
+
+/* Gaya untuk tabel */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 25px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+}
+
+th {
+  background-color: #DA498D;
+  color: #FAC67A;
+  font-weight: 600;
+}
+
+/* Gaya untuk tautan */
+a {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #2980b9;
+}
+
+/* Gaya untuk tombol */
+button {
+  background-color: #DA498D;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #DA498D;
+}
+
+/* Gaya untuk gambar */
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+img:hover {
+  transform: scale(1.1);
+}
+
+/* Gaya untuk gambar dengan caption */
+figure {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+figcaption {
+  font-size: 0.9em;
+  color: #DA498D

@@ -1,0 +1,122 @@
+---
+title: "Visualisasi Data dengan GGPLOT2"
+author: "Arya Senpai - Institut Teknologi Statistika dan Bisnis Muhammadiyah"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    css: style.css
+    theme: cosmo
+    higlight: zenburn
+    toc: true
+    toc_float:
+      collapsed: true
+    df_print: paged
+bibliography: references.bib
+---
+
+```{=html}
+<style>
+body{
+text-align: justify}
+</style>
+```
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Pengantar ggplot2
+
+ggplot2 adalah paket visualisasi data yang sangat populer di R, dikembangkan oleh Hadley Wickham. Paket ini didasarkan pada konsep **"Grammar of Graphics"**, yang memberikan kerangka kerja sistematis untuk membuat grafik. Dengan pendekatan ini, pengguna dapat membangun visualisasi data secara bertahap, dimulai dari pemetaan data hingga pengaturan estetika dan elemen tambahan. Fitur ini membuat ggplot2 sangat intuitif dan powerful untuk berbagai kebutuhan analisis data.
+
+Salah satu fitur utama ggplot2 adalah pemisahan antara data dan elemen estetika. Anda dapat memulai dengan data mentah, kemudian menambahkan lapisan (layers) untuk mengatur tampilan, seperti warna, ukuran, dan bentuk, sesuai kebutuhan. Dengan pendekatan ini, ggplot2 memungkinkan fleksibilitas tinggi dalam membuat grafik yang sederhana hingga kompleks, seperti scatter plot, bar chart, line chart, hingga grafik yang lebih spesifik seperti heatmap.
+
+Komunitas pengguna ggplot2 yang besar dan aktif adalah salah satu alasan utama popularitasnya. Banyak tutorial, dokumentasi, dan contoh kasus tersedia secara online, mempermudah pengguna pemula maupun ahli untuk memahami dan memanfaatkan fitur-fiturnya. Paket ini juga sering diperbarui, memastikan kompatibilitas dengan perkembangan R dan kebutuhan analisis modern.
+
+Selain itu, ggplot2 mendukung integrasi dengan paket lain untuk memperluas fungsionalitasnya. Misalnya, pengguna dapat menggunakan **`ggthemes`** untuk menambahkan tema khusus atau **`ggplotly`** untuk membuat grafik interaktif. Dengan fitur ini, ggplot2 menjadi alat yang tidak hanya cocok untuk eksplorasi data tetapi juga untuk pembuatan laporan dan presentasi visual yang profesional.
+
+Dalam dunia data science, ggplot2 dianggap sebagai alat yang esensial untuk analisis visual. Dengan kemampuannya yang fleksibel, intuitif, dan didukung oleh komunitas yang besar, ggplot2 telah menjadi pilihan utama bagi analis data, peneliti, dan profesional lainnya. Visualisasi data yang dihasilkan oleh ggplot2 membantu menyampaikan informasi dengan cara yang efektif, menarik, dan mudah dipahami.
+
+# Dasar-Dasar ggplot2
+
+## Introduction
+
+ggplot2 bekerja dengan cara membangun plot secara bertahap melalui konsep lapisan (layers). Setiap lapisan menambahkan elemen baru, seperti data, estetika, atau geometri, untuk menciptakan grafik yang lebih kompleks. Anda memulai dengan mendefinisikan data dan pemetaan estetika (aesthetic mapping) menggunakan fungsi ggplot(). Setelah itu, Anda dapat menambahkan lapisan geometri, seperti geom_point() untuk scatter plot, geom_line() untuk line chart, atau geom_bar() untuk bar chart. Pendekatan ini membuat ggplot2 sangat fleksibel dan modular.
+
+## Contoh Implementasi
+### contoh pertama
+```{r}
+# memanggil library
+library(ggplot2)
+# membuat data dengan base R
+data <- data.frame(x = rnorm(100), y = rnorm(100))
+# membuat scotter plot
+ggplot(data, aes(x = x, y = y)) + 
+geom_point() + 
+labs(title = "Plot Titik", x = "Sumbu X", y = "Sumbu Y") +
+theme_dark()
+```
+### contoh kedua
+```{r}
+# membuat data dengan base R
+data <- data.frame(x = rnorm(100), y = rnorm(100), grup = sample(c("A","B","C","D"), 100, replace = TRUE))
+# membuat scotter plot dengan warna berbeda setiap grupnya
+ggplot(data, aes(x = x, y = y, color = grup)) +
+  geom_point() +
+  facet_wrap(~ grup) +
+  scale_color_manual(values = c("A" = "green", "B" = "red", "C" = "blue", "D" = "yellow")) +
+  theme_minimal()
+```
+
+Dalam contoh tersebut, fungsi `ggplot()` digunakan untuk menginisialisasi plot dengan data dan pemetaan estetika (aesthetic mapping) melalui `aes()`. Pemetaan estetika ini menentukan bagaimana variabel data seperti sumbu x dan y akan ditampilkan pada grafik. Fungsi `geom_point()` menambahkan lapisan geometri untuk menggambar titik-titik pada scatter plot, yang merupakan elemen utama dalam visualisasi ini. Fungsi-fungsi ini bekerja bersama secara modular, memungkinkan pengguna untuk membangun plot sesuai kebutuhan secara bertahap.
+
+Selain itu, fungsi `labs()` digunakan untuk menambahkan judul grafik, label sumbu x, dan label sumbu y, sehingga visualisasi menjadi lebih informatif. Untuk meningkatkan tampilan, `theme_minimal()` diterapkan untuk memberikan gaya minimalis pada grafik, menghilangkan elemen visual yang tidak diperlukan dan menonjolkan data utama. Dengan kombinasi fungsi-fungsi ini, ggplot2 memungkinkan pengguna membuat grafik yang tidak hanya menarik tetapi juga jelas dan mudah dipahami.
+
+# Read Data
+### Format yang harus dilakukan
+```{r}
+# memanggil library
+library(readr)
+# membuat nama data dan memanggilnya sesuai nama file
+iris_iris <- read_csv("iris - iris.csv")
+# melihat data yang telah diberi nama
+View(iris_iris)
+```
+### Contoh penggunaan
+```{r}
+library(readr)
+lizards <- read_csv("lizards.csv")
+View(lizards)
+```
+### Membuat visualisasi datanya
+```{r}
+ggplot(lizards, aes(x = total_length , y = weight)) + 
+geom_point() +
+labs(title = "Plot Titik", x = "total_length" , y = "weight" )
+```
+
+```{r}
+ggplot(lizards, aes(x = total_length, y = common_name)) +
+geom_jitter() +
+  labs(title = "Plot titik - titik lizard",x = "total_length", y = "common_name")
+```
+
+```{r}
+library(ggplot2)
+
+ggplot(lizards, aes(x = weight)) +
+  geom_histogram(colour = "orange", fill = "magenta", linetype = "dotted", size = 2) +
+  labs(title = "Histogram of Lizard Weights", x = "Weight", y = "Count")
+
+```
+
+```{r}
+ggplot(lizards, aes(x = total_length , y = weight)) + 
+geom_point(colour = "blue", shape = 6) +
+labs(title = "Plot Titik", x = "total_length" , y = "weight" )
+```
+
+```{r}
+ggplot(lizards, aes(x = total_length , y = weight)) + 
+geom_point(shape = 6, aes(colour = common_name, size = total_length)) +
+labs(title = "lizard", x = "total_length" , y = "weight" )
+```
