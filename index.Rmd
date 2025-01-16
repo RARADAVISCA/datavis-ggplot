@@ -143,6 +143,54 @@ ggplot(lizards, aes(x= total_length,y=weight)) +
   theme_classic()
 ```
 
+```{r}
+library(gapminder)
+library(ggplot2)
+library(gganimate)
+```
+
+```{r}
+data = gapminder
+data
+```
+
+```{r}
+library(gapminder)
+library(ggplot2)
+library(gganimate)
+gapminder_plot <- ggplot(
+  gapminder, 
+  aes(x = gdpPercap, y=lifeExp)
+  ) +
+  geom_point(alpha = 0.6) +
+  scale_x_log10() +
+  labs(x = "GDP per capita", y = "Life expectancy")
+```
+
+
+
+```{r}
+library(gapminder)
+gapminder_point <- ggplot(
+  gapminder,
+  aes(x = gdpPercap, y = lifeExp, size = pop, color = continent)) +
+  geom_point(alpha = 0.6) + 
+  scale_x_log10() + 
+  scale_color_viridis_d( option = "D")+
+  labs(
+    title = "Plot Titik Berdasarkan GDP per Kapita dan Harapan Hidup",
+    x = "GDP per Kapita",
+    y = "Harapan Hidup"
+  )
+
+animated_gapminder <- gapminder_point +
+transition_time(year) + labs(title = "gapminder animated")
+
+animate(animated_gapminder, nframes = 50, renderer = gifski_renderer("animated_gapminder.gif"))
+```
+
+
+
 
 # R Markdown
 
@@ -174,6 +222,5 @@ Note that the `echo = FALSE` parameter was added to the code chunk to prevent pr
 # Referensi
 
 ```
-aku wes jan kesel ngurursi iki. iso ora rampung - rampung ke piyee......!!!
-makasihh rara udah dibeliin jajannnnn.....!!!!
+datavis ggplot
 ```
