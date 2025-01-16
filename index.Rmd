@@ -106,8 +106,9 @@ Periksa struktur file untuk memastikan data terorganisir dengan baik, termasuk n
 ## 3.1 Membaca data CSV
 ```{r}
 library(readr)
-lizards <- read_csv("D:/TUGAS RARA/dataviz_ggplot/lizards.csv")
+lizards <- read_csv("lizards.csv")
 ```
+
 ```{r}
 library(ggplot2)
 ggplot(lizards, aes(x= total_length, y= weight)) +
@@ -171,3 +172,7 @@ plot(pressure)
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
 
 # Referensi
+
+```
+aku wes jan kesel ngurursi iki. iso ora rampung - rampung ke piyee......!!!
+```
